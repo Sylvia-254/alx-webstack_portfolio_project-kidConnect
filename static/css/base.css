@@ -1,0 +1,129 @@
+/* General Reset */
+body, ul, li, a, button, input {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+  }
+  
+  .navbar {
+    width: 100%; /* Full width */
+    background-color: #2d2d2d; /* Dark Gray */
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+  }
+  
+  /* Logo */
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  .logo span {
+    color: #fcb700; /* Yellow Dot */
+  }
+  
+  /* Navigation Links */
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .nav-links li a:hover {
+    color: #fcb700; /* Yellow */
+  }
+  
+  .nav-links li a.highlighted {
+    color: #fcb700; /* Yellow */
+  }
+  
+  /* Report Button */
+  .report-button {
+    background-color: transparent;
+    border: 2px solid #fcb700;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: all 0.3s;
+  }
+  
+  .report-button:hover {
+    background-color: #fcb700;
+    color: #2d2d2d;
+  }
+  
+  /* Search Bar with Button */
+  .search-bar .form {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 20px;
+    flex-grow: 1;
+    max-width: 300px;
+  }
+  
+  .search-bar input {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 5px 0 0 5px; /* Rounded corners */
+    border: 1px solid #ccc;
+    font-size: 0.9rem;
+  }
+  
+  .search-bar input::placeholder {
+    color: #aaa;
+  }
+  
+  .search-bar  button {
+    background-color: #fcb700; /* Yellow */
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 0 5px 5px 0; /* Rounded corners */
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .search-bar button:hover {
+    background-color: #e0a800; /* Slightly darker yellow */
+  }
+  
+.view {
+  position: relative;
+}
+
+
+
+
+
