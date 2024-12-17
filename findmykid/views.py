@@ -10,4 +10,4 @@ class Base(TemplateView):
     template_name = 'base.html'
 
 class Report(TemplateView):
-    teplate_name = 'report.html'
+    template_name = 'report.html'
