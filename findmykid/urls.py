@@ -1,8 +1,9 @@
 from django.urls import path
 from .views import Base, Report
+from . import views
 
 urlpatterns = [
     path('base/', Base.as_view(), name='base'),
-    path('report/', Report.as_view(), name='report'),
+    path('report/', views.report, name='report'),
 
 ]
