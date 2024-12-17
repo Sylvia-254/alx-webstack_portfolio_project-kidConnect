@@ -17,4 +17,5 @@ class Report(models.Model):
     status = models.CharField(max_length=256, default='pending')
 
     def __str__(self):
+        """label of each object of the above class"""
         return f"{self.firstName } {self.lastName}"

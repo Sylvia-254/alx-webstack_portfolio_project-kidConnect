@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
+#import models here
+from .models import Report
+
 # Create your views here.
 # def base(request):
 #     """rendering the base file for testing purposes"""
@@ -9,8 +12,8 @@ from django.views.generic import TemplateView
 class Base(TemplateView):
     template_name = 'base.html'
 
-class Report(TemplateView):
-    template_name = 'report.html'
+# class Report(TemplateView):
+#     template_name = 'report.html'
 
 def report(request):
     """the report page and its logic is here"""
