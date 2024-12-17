@@ -1,6 +1,8 @@
 from django.urls import path
-from . import views
+from .views import Base, Report
 
 urlpatterns = [
-    path('base/', views.base, name='base')
+    path('base/', Base.as_view(), name='base'),
+    path('report/', Report.as_view(), name='report'),
+
 ]
