@@ -8,4 +8,6 @@ class SimpleTests(TestCase):
     def test_reported_page_status_code(self):
         responseReported = self.client.get('/reported/')
         self.assertEqual(responseReported.status_code, 200)
-    def test_base_page_status_code()
+    def test_base_page_status_code(self):
+        responseBase = self.client.get('/base/')
+        self.assertEqual(responseBase.status_code, 200)
