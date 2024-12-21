@@ -37,3 +37,18 @@ def report(request):
         
         newReport.save()
     return render(request, 'report.html')
+
+def reported(request):
+    """logic for retrieving reported children from the database"""
+    context = {}
+    reportedChildren = Report.objects.all()
+    context['reportedChildren'] =  reportedChildren
+    return render(request, 'reportedChildren.html', context)
+
+# reportedChildren search
+def search(request):
+    """logic for the search bar and button"""
+    if request.method == 'GET':
+        search = request.GET['search']
+        posts = Report.objects.filter(firstName = search) | Report.objects.filter(middleName = search) | Report.objects.filter(lastName = search) 
+        return render(request, 'search.html', {'posts':posts, 'search':search})

@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Search {% endblock %}
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static '/css/reportedChildren.css' %}">
+  <title>Responsive Report Card</title>
+    <style>
+        .search-text {
+            border: 2px solid #fcb700; /* dark Yellow border */
+            background-color: #2d2d2d; /* Grey background */
+            color: white; /* White text */
+            padding: 10px; /* Adds some spacing inside the paragraph */
+            border-radius: 5px; /* Optional: Rounds the corners */
+            font-size: 16px; /* Adjust font size as needed */
+            line-height: 1.5;
+            font-weight: bold; 
+            text-align: center;
+        }
+
+        .search-results {
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-results #found {
+            color:green;
+        }
+
+        .search-results #not-found {
+            color: red;
+        }
+    </style>
+</head>
+<body style="background-color: black;">
+    
+    
+    {% if posts %}
+    <div class="search-results">
+        <button class="search-text">you searched for <i>{{search}}</I> <strong id="found">....Result Found</strong></button>
+    </div>
+    
+        {% for post in posts %}
+        <div class="report-card">
+          <div class="report-card-image">
+            <img src="{{ post.profilePhoto.url }}' %}" alt="{{ post.profilePhoto }}" height="200px" width="200px">
+          </div>
+          <div class="report-card-details">
+            <h2 class="report-name">Name: {{ post.firstName }} {{post.lastName}}</h2>
+            <p class="report-age"><strong>Age:</strong> {{ post.age }}</p>
+            <p class="report-height"><strong>Height:</strong> {{ post.height }}m</p>
+            {% if post.status == "Found" %}
+              <p class="report-status report-found">Status: {{post.status}} </p>
+            {% else %}
+            <p class="report-status report-missing">Status: {{post.status}} </p>
+            {%endif%}
+          </div>
+        </div>
+        
+        {% endfor %}
+      </div>
+        {% else  %}
+        <div class="search-results">
+            <button class="search-text">you searched for <i>{{ search }}</i> <strong id="not-found">... Results not found</strong></button>
+            <button><a href="{% url 'reportedChildren' %}">back</a></button>
+        </div>
+    {% endif%}
+
+   
+    
+</body>
+</html>
+
+{% endblock body %}

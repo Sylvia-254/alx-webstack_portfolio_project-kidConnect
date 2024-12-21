@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Reported Children {% endblock title %}
+{% block css %}<link rel="stylesheet" href="{% static '/css/reportedChildren.css' %}"> {% endblock css %}
+
+{% block body %}
+
+  <div class="search-position">
+    <form action="{% url 'search' %}" class="search">
+      <input type="text" placeholder="search for a child's first, middle or last name" name="search">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+    <div class="report-card-container position">
+    {% for reportedChild in reportedChildren %}
+    <div class="report-card">
+      <div class="report-card-image">
+        
+          <img src="{{ reportedChild.profilePhoto.url }}" alt="" height="200px" width="200px">
+        
+        
+      </div>
+      <div class="report-card-details">
+        <h2 class="report-name">Name: {{ reportedChild.firstName }} {{reportedChild.lastName}}</h2>
+        <p class="report-age"><strong>Age:</strong> {{ reportedChild.age }}</p>
+        <p class="report-height"><strong>Height:</strong> {{ reportedChild.height }}m</p>
+        {% if reportedChild.status == "Found" %}
+          <p class="report-status report-found">Status: {{reportedChild.status}} </p>
+        {% else %}
+        <p class="report-status report-missing">Status: {{reportedChild.status}} </p>
+        {%endif%}
+        <a href=""><p>generate details</p></a>
+      </div>
+    </div>
+    
+    {% endfor %}
+  </div>
+</div>
+</body>
+
+
+
+{% endblock body %}
