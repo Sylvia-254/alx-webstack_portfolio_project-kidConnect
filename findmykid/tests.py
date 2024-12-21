@@ -1,9 +1,11 @@
 from django.test import TestCase
-from django.test import SimpleTestCase
 
 # Create your tests here.
-class SimpleTests(SimpleTestCase):
+class SimpleTests(TestCase):
     def test_report_page_status_code(self):
-        response = self.client.get('/report/')
-        self.assertEqual(response.status_code, 200)
-    
+        responseReport = self.client.get('/report/')
+        self.assertEqual(responseReport.status_code, 200)
+    def test_reported_page_status_code(self):
+        responseReported = self.client.get('/reported/')
+        self.assertEqual(responseReported.status_code, 200)
+    def test_base_page_status_code()
