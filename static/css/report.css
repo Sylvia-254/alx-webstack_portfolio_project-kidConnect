@@ -30,6 +30,7 @@
     flex: 1;
     padding: 20px 40px;
     background: #ffffff;
+    /* background: linear-gradient(rgba(4, 9, 30, 0.7),rgba(4, 9, 30, 0.7)); */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     
 }

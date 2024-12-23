@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title%} KidConnect Navbar {% endblock %}</title>
+  <title>{% block title %} KidConnect Navbar {% endblock %}</title>
 
   <!-- css for base.html -->
   <link rel="stylesheet" href="{% static '/css/base.css' %}">
@@ -39,6 +39,9 @@
       <!-- Report Button -->
       <a href="{% url 'report' %}" class="report-button">Report a Missing child</a>
       <!-- update.html css -->
+       <a href="">login</a>
+       <p>/</p>
+       <a href="{% url 'register' %}">Register</a>
       <link href="" rel="stylesheet">
       <!-- Search Bar -->
       <!-- <form class="search-bar" method="get" action="">
@@ -54,6 +57,7 @@
   {% block body %}
 
   {% endblock body %}
+
 
 
 </body>
