@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from django.contrib.auth.forms import UserCreationForm
+
 
 #import models here
 from .models import Report
@@ -8,9 +10,23 @@ from .models import Report
 # def base(request):
 #     """rendering the base file for testing purposes"""
 #     return render(request, 'base.html')
+class IndexView(TemplateView):
+    template_name = 'index.html'
+
+def registerPage(request):
+    form = UserCreationForm()
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+
+
+    context = {'form':form}
+    return render(request, 'register.html', context)
 
 class Base(TemplateView):
-    template_name = 'base.html'
+    template_name = 'base1.html'
 
 # class Report(TemplateView):
 #     template_name = 'report.html'
