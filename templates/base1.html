@@ -21,7 +21,7 @@
 <body>
     <section class="header">
         <nav>
-            <a href="index.html"><img src="{% static '/images/logo.png' %}" alt="logo"></a>
+            <a href="{% url 'home' %}"><img src="{% static '/images/logo.png' %}" alt="logo"></a>
             <div class="nav-links" id="navLinks">
                 <i class="fa fa-times" onclick="hideMenu()"></i>
 
@@ -46,6 +46,18 @@
             
         {% endblock body %}
 
+     <!-- ---- footer ---- -->
+    <section class="footer">
+        <h4>About us</h4>
+        <p>this is about sila Mulingi</p>
+        <div class="icons">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-linkedin"></i>
+        </div>
+        <p>Made with <i class="fa fa-heart-o"></i> by Sila Mulingi and Sylvia Cheptoo</p>
+    </section>
 
 <script>
     var navLinks = document.getElementById("navLinks")
