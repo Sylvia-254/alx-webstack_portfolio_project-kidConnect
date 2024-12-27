@@ -22,22 +22,48 @@
     <section class="header">
         <nav>
             <a href="{% url 'home' %}"><img src="{% static '/images/logo.png' %}" alt="logo"></a>
-            <div class="nav-links" id="navLinks">
-                <i class="fa fa-times" onclick="hideMenu()"></i>
+           
 
-                <ul>
-                    <li><a href="{% url 'home' %}">HOME</a></li>
-                    <li><a href="">ABOUT</a></li>
-                    <li><a href="#SERVICES">SERVICES</a></li>
-                    <li><a href="">BLOG</a></li>
-                    <li><a href="">CONTACT</a></li>
-                    <li><a href="{% url 'report' %}">REPORT A MISSING CHILD</a></li>
-                    <li><a href="{% url 'reportedChildren' %}">REPORTED CHILDREN</a></li>
-                    <li><a href="">login</a></li>
-                    <li><a href="{% url 'register' %}">sign up</a></li>
-                    
-                </ul>
-            </div>
+            {% if user.is_authenticated %}
+                <div class="nav-links" id="navLinks">
+                    <i class="fa fa-times" onclick="hideMenu()"></i>
+
+                    <ul>
+                        <li><a href="{% url 'home' %}">HOME</a></li>
+                        <li><a href="">ABOUT</a></li>
+                        <li><a href="{% url 'home' %}#SERVICES">SERVICES</a></li>
+                        <li><a href="">BLOG</a></li>
+                        <li><a href="">CONTACT</a></li>
+                        <li><a href="{% url 'report' %}">REPORT A MISSING CHILD</a></li>
+                        <li><a href="{% url 'reportedChildren' %}">REPORTED CHILDREN</a></li>
+                        <!-- <li><a href="{% url 'login' %}">login</a></li>
+                        <li><a href="{% url 'register' %}">sign up</a></li> -->
+                        <li><a href="{% url 'logout' %}">logout {{user.username}} </a></li>
+                        
+
+                       
+                        
+                       
+                        
+                    </ul>
+                </div>
+            {% else %}
+                <div class="nav-links" id="navLinks">
+                    <i class="fa fa-times" onclick="hideMenu()"></i>
+
+                    <ul>
+                        <li><a href="{% url 'home' %}">HOME</a></li>
+                        <li><a href="">ABOUT</a></li>
+                        <li><a href="{% url 'home' %}#SERVICES">SERVICES</a></li>
+                        <li><a href="">BLOG</a></li>
+                        <li><a href="">CONTACT</a></li>
+                        <li><a href="{% url 'report' %}">REPORT A MISSING CHILD</a></li>
+                        <li><a href="{% url 'reportedChildren' %}">REPORTED CHILDREN</a></li>
+                        <li><a href="{% url 'login' %}">login</a></li>
+                        <li><a href="{% url 'register' %}">sign up</a></li>
+                    </ul>
+                </div>
+            {% endif %}
             <i class="fa fa-bars" onclick="showMenu()"></i>
 
         </nav>

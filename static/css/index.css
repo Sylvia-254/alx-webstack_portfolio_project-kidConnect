@@ -27,10 +27,11 @@ nav {
 
 /* THE LOGO */
 nav > img {
-    width: 150px;
+    width: 10px;
 }
 nav > a > img {
-    height: 80px;
+    height: 60px;
+    width: 60px;
     border-radius: 50%;
 }
 /* THE NAVIGATION BAR LINKS */
@@ -55,6 +56,21 @@ nav > a > img {
     border: 1px solid #fcb700;
     border-radius: 5px;
 }
+.nav-links>ul>li>a {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.nav-links > ul > li > a > img {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    /* padding: 0; */
+    margin-right: 2px;
+    text-align: center;
+    
+    
+} 
 
 .nav-links ul li::after {
     content: '';
