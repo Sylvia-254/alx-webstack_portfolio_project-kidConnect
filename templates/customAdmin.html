@@ -1,0 +1,157 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+
+
+{% block body %}
+    
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form with Actions</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        /* Table Styles */
+        .form-table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .form-table thead {
+            background-color: #2d2d2d;
+            color: white;
+        }
+
+        .form-table th,
+        .form-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .form-table th {
+            font-weight: bold;
+        }
+
+        .form-table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .form-table tbody tr:hover {
+            background-color: #ffc107;
+        }
+
+        /* Button Styles */
+        .action-buttons button {
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .action-buttons .edit-btn {
+            background-color: green;
+            color: white;
+        }
+
+        .action-buttons .edit-btn:hover {
+            background-color: #45b745;
+            transform: scale(1.05);
+        }
+
+        .action-buttons .delete-btn {
+            background-color: red;
+            color: white;
+        }
+
+        .action-buttons .delete-btn:hover {
+            background-color: #d93636;
+            transform: scale(1.05);
+        }
+
+        .action-buttons .contact-btn {
+            background-color: blue;
+            color: white;
+        }
+        .action-buttons .gen-btn {
+            background-color: maroon;
+            color: white;
+        }
+
+        .action-buttons .contact-btn:hover {
+            background-color: #757575;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <h1>Reports Management</h1>
+    <table class="form-table">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email Address</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Height</th>
+                <th>Skin Tone</th>
+                <th>Last Seen Location</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Example Row -->
+            {% for reportedChild in reportedChildren %}
+            <tr>
+                
+                    
+                
+                <td>{{ reportedChild.firstName }}</td>
+                <td>{{ reportedChild.lastName }}</td>
+                <td>{{ reportedChild.email }}</td>
+                <td>{{ reportedChild.gender }}</td>
+                <td>{{ reportedChild.age }}</td>
+                <td>{{ reportedChild.height }}</td>
+                <td>{{ reportedChild.skinTone }}</td>
+                <td>{{ reportedChild.location }}</td>
+                <td class="action-buttons">
+                    <a href="{% url 'update' reportedChild.id %}"><button class="edit-btn">update</button></a>
+                    <a href="{% url 'delete' reportedChild.id %}"><button class="delete-btn">Delete</button></a>
+                    <a href="mailto:{{reportedChild.email}}"><button class="contact-btn">Contact</button></a>
+                    <button class="gen-btn">generate details</button>
+                </td>
+                
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock body %}

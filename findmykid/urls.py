@@ -11,4 +11,7 @@ urlpatterns = [
     path('reported/', views.reported, name='reportedChildren'),
     path('search/', views.search, name="search"),
     path('logout/', views.logoutView, name="logout"),
+    path('customAdmin/', views.customAdmin, name="customAdmin"),
+    path('customAdmin/update/<str:id>', views.updateDetails, name="update"),
+    path('customAdmin/delete/<str:id>', views.delete, name="delete"),
 ]

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -99,6 +99,7 @@ def report(request):
         
         newReport.save()
     return render(request, 'report.html')
+
 @login_required #restrict this page to authenticated users
 def reported(request):
     """logic for retrieving reported children from the database"""
@@ -115,3 +116,55 @@ def search(request):
         search = request.GET['search']
         posts = Report.objects.filter(firstName = search) | Report.objects.filter(middleName = search) | Report.objects.filter(lastName = search) 
         return render(request, 'search.html', {'posts':posts, 'search':search})
+
+
+#customAdmin view
+def customAdmin(request):
+    reportedChildren = Report.objects.all()
+    context = {'reportedChildren' : reportedChildren }
+    return render(request, 'customAdmin.html', context)
+
+#admin update button
+def updateDetails(request, id): 
+    updateChild = get_object_or_404(Report, id=id)
+    reportedChildImage = updateChild.profilePhoto.url
+    if request.method == 'POST':
+        updateChild.firstName = request.POST.get('firstName')
+        updateChild.middleName = request.POST.get('middleName')
+        updateChild.lastName = request.POST.get('lastName')
+        updateChild.email = request.POST.get('email')
+        updateChild.gender = request.POST.get('gender')
+        updateChild.age = request.POST.get('age')
+        updateChild.height = request.POST.get('height')
+        updateChild.skinTone = request.POST.get('skinTone')
+        updateChild.location = request.POST.get('location')
+        updateChild.dressing = request.POST.get('dressing')
+        new_profile_photo = request.FILES.get('profilePhoto')  # Use FILES for image uploads
+
+        if new_profile_photo:
+            # If a new image is uploaded, update the field
+            updateChild.profilePhoto = new_profile_photo
+        else:
+            # If no new image is provided, keep the existing image
+            # This line isn't necessary unless you overwrite the field elsewhere
+            pass
+        updateChild.status = request.POST.get('status')
+        updateChild.save()
+    context = { 'updateChild':updateChild, 'reportedChildImage':reportedChildImage }
+    return render(request, 'update.html', context)
+
+# customAdmin/delete
+def delete(request, id):
+    deleteChild = Report.objects.get(id=id)
+    deleteChild.delete()
+    return redirect('customAdmin')
+
+#generateDetails
+def generateDetails(request, id):
+    """logic and back end for the generate Details button in reported page"""
+    reportedChild = Report.objects.get(id=id)
+    email = reportedChild.email
+    context = {'reportedChild':reportedChild, 'email':email }
+
+    return render(request, 'generateDetails.html', context)
+
