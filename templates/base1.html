@@ -30,10 +30,10 @@
 
                     <ul>
                         <li><a href="{% url 'home' %}">HOME</a></li>
-                        <li><a href="">ABOUT</a></li>
+                        <li><a href="{% url 'home' %}#ABOUT">ABOUT</a></li>
                         <li><a href="{% url 'home' %}#SERVICES">SERVICES</a></li>
                         <li><a href="">BLOG</a></li>
-                        <li><a href="">CONTACT</a></li>
+                        <li><a href="{% url 'home' %}#CONTACT">CONTACT</a></li>
                         <li><a href="{% url 'report' %}">REPORT A MISSING CHILD</a></li>
                         <li><a href="{% url 'reportedChildren' %}">REPORTED CHILDREN</a></li>
                         <!-- <li><a href="{% url 'login' %}">login</a></li>
@@ -53,7 +53,7 @@
 
                     <ul>
                         <li><a href="{% url 'home' %}">HOME</a></li>
-                        <li><a href="">ABOUT</a></li>
+                        <li><a href="{% url 'home' %}#ABOUT">ABOUT</a></li>
                         <li><a href="{% url 'home' %}#SERVICES">SERVICES</a></li>
                         <li><a href="">BLOG</a></li>
                         <li><a href="">CONTACT</a></li>
@@ -73,7 +73,7 @@
         {% endblock body %}
 
      <!-- ---- footer ---- -->
-    <section class="footer">
+    <section class="footer" id="ABOUT">
         <h4>About us</h4>
         <p>this is about sila Mulingi</p>
         <div class="icons">
